@@ -1,10 +1,14 @@
-name: Simple Workflow
+name: My example
 
-on:
+
+on: 
     workflow_dispatch:
+        inputs:
+          data:
+            description: 'Insert your value here'
+            required: true
 
 jobs:
-
     TIMESTAMP:
         runs-on: ubuntu-latest
 
@@ -15,6 +19,10 @@ jobs:
             cp ./scripts/main.py ./.github/actions/action_1.2/main.py
         - name: 1.2 EXECUTING THE PYTHON SCRIPT
           uses: ./.github/actions/action_1.2
+        - name: Add new data in output.txt
+          run: |
+            "echo ${{ github.event.inputs.data }} >> output.txt"
+            "date +'%F %H:%M' >> output.txt"
         - name: 1.3 DOWNLOAD ARTIFACT
           uses: actions/upload-artifact@v2
           with:
