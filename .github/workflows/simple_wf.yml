@@ -21,10 +21,10 @@ jobs:
           uses: ./.github/actions/action_1.2
         - name: Add new data in output.txt
           run: |
-            echo ${{ github.event.inputs.data }} >> output.txt
-            date +'%F %H:%M' >> output.txt
+            echo "${{ github.event.inputs.data }} date +'%F %H:%M'" >> output.txt
+        # date +'%F %H:%M' >> output.txt
         - name: 1.3 DOWNLOAD ARTIFACT
           uses: actions/upload-artifact@v2
           with:
-              name: output
+              name: output.txt
               path: /home/runner/work/devops-school/devops-school/output.txt
