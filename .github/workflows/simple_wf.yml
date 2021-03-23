@@ -21,8 +21,8 @@ jobs:
           uses: ./.github/actions/action_1.2
         - name: Add new data in output.txt
           run: |
-            echo ${{ github.event.inputs.data }} >> output.txt
-            date +'%F %H:%M' >> output.txt
+            echo ${{ github.event.inputs.data }} >> log.md
+            date +'%F %H:%M' >> log.md
         - name: 1.3 DOWNLOAD ARTIFACT
           uses: actions/upload-artifact@v2
           with:
